@@ -1,12 +1,23 @@
 <div ng-controller="ItemController">
+  <div ng-show='cart'>
+    <p>Items in your shopping cart</p>
+    <p ng-repeat='item in cartItems'>{{item.add}} {{item.name}}</p>
+    <p>Subtotal: ${{price}}</p>
+    <button type='button' ng-click='submit()'>SUBMIT!</button>
+  </div>
+  <button type='button' ng-click='checkout()' ng-show='allItem'>Checkout</button>
   <div ng-repeat='item in items' ng-show='allItem'>
   <h2>{{item.name}}</h2>
-  <img src="{{item.url}}">
+  <img ng-src="{{item.url}}">
   <p>Description: {{item.description}}</p>
   <p>Price: ${{item.price}}</p>
   <p>In stock: {{item.quantity}}</p>
   <input type='integer' ng-model='item.add'>
   <button type='button' ng-click='addItem(item)'>Add!</button>
   <p ng-show='itemQuantity'>Not enough in stock!</p>
+  </div>
+  <div ng-show='purchase'>
+    <h3>Thanks for shopping with us!</h3>
+    <button type='button' ng-click="keepShopping()">Continue shopping</button>
   </div>
 </div>
