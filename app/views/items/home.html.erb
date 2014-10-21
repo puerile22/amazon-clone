@@ -5,5 +5,8 @@
   <p>Description: {{item.description}}</p>
   <p>Price: ${{item.price}}</p>
   <p>In stock: {{item.quantity}}</p>
+  <input type='integer' ng-model='item.add'>
+  <button type='button' ng-click='addItem(item)'>Add!</button>
+  <p ng-show='itemQuantity'>Not enough in stock!</p>
   </div>
 </div>
