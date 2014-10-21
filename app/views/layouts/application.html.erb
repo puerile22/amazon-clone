@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html ng-app="amazonApp">
+<html>
 <head>
   <title>Amazon</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<ng-view>
-
+<body ng-app="amazonApp">
+  <%= yield %>
 </body>
 </html>

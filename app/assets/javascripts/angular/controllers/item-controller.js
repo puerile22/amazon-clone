@@ -1,14 +1,10 @@
-app.controller('ItemController', ['$scope','Item','$timeout','Order','$location', function($scope, Item,$timeout,Order,$location) {
-  $location.path('/');
+app.controller('ItemController', ['$scope','Item','$timeout','Order','$location','OrderService', function($scope, Item,$timeout,Order,$location,OrderService) {
   $scope.items = Item.query();
   $scope.allItem = true;
-  $scope.cart = false;
-  $scope.purchase = false;
-  $scope.empty = false;
+  
   $scope.addItem = function(item) {
     if (item.quantity >= parseInt(item.add) && parseInt(item.add) > 0) {
       item.quantity -= parseInt(item.add);
-      // item.$update();
     } else {
       $scope.itemQuantity = true;
       item.add = undefined;
@@ -27,32 +23,16 @@ app.controller('ItemController', ['$scope','Item','$timeout','Order','$location'
         $scope.order.cost += parseInt($scope.items[i].add) * parseInt($scope.items[i].price);
       }
     }
-    $scope.allItem = false;
-    if ($scope.cartItems.length === 0) {
-      $scope.empty = true;
-    } else {
-      $scope.cart = true;
-    }
+    OrderService.cart = [];
+    OrderService.cart = $scope.cartItems;
+    OrderService.order = '';
+    OrderService.order = $scope.order;
+    $location.path('/checkout');
+    // $scope.allItem = false;
+    // if ($scope.cartItems.length === 0) {
+    //   $scope.empty = true;
+    // } else {
+    //   $scope.cart = true;
+    // }
   };
-  $scope.submit = function() {
-    if ($scope.order.person == null) {
-      $scope.nameEmpty = true;
-      $timeout(function() {
-        $scope.nameEmpty =false;
-      },1000);
-    } else {
-      for (var i = 0;i < $scope.cartItems.length;i++) {
-        $scope.cartItems[i].$update();
-      }
-      $scope.order.$save();
-      $scope.cart = false;
-      $scope.purchase = true;
-    }
-  };
-  $scope.keepShopping = function() {
-    $scope.empty = false;
-    $scope.cart = false;
-    $scope.purchase = false;
-    $scope.allItem = true;
-  }
 }]);
