@@ -1,8 +1,14 @@
 <div ng-controller="ItemController">
+  <div ng-show='empty'>
+    <h3>Your cart is empty!</h3>
+    <button type='button' ng-click="keepShopping()">Continue shopping</button>
+  </div>
   <div ng-show='cart'>
     <p>Items in your shopping cart</p>
     <p ng-repeat='item in cartItems'>{{item.add}} {{item.name}}</p>
     <p>Subtotal: ${{price}}</p>
+    <label for='name'>Please input your name:</label>
+    <input type="text" ng-model='name' id='name'><br>
     <button type='button' ng-click='submit()'>SUBMIT!</button>
   </div>
   <button type='button' ng-click='checkout()' ng-show='allItem'>Checkout</button>

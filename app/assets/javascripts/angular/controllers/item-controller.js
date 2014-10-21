@@ -25,7 +25,11 @@ app.controller('ItemController', ['$scope','Item','$timeout', function($scope, I
       }
     }
     $scope.allItem = false;
-    $scope.cart = true;
+    if ($scope.cartItems.length === 0) {
+      $scope.empty = true;
+    } else {
+      $scope.cart = true;
+    }
   };
   $scope.submit = function() {
     for (var i = 0;i < $scope.cartItems.length;i++) {
@@ -35,8 +39,9 @@ app.controller('ItemController', ['$scope','Item','$timeout', function($scope, I
     $scope.purchase = true;
   };
   $scope.keepShopping = function() {
-    $scope.allItem = true;
+    $scope.empty = false;
     $scope.cart = false;
     $scope.purchase = false;
+    $scope.allItem = true;
   }
 }]);
