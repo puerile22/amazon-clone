@@ -8,10 +8,11 @@
   <p>Subtotal: ${{order.cost}}</p>
   <label for='name'>Please input your name:</label>
   <input type="text" ng-model='order.person' id='name'><br>
-  <p ng-show='nameEmpty'>Your name can't be empty!</p>
+  <p ng-show='nameEmpty' style='color:red;'>Your name can't be empty!</p>
   <button type='button' ng-click='submit()'>SUBMIT!</button>
 </div>
 <div ng-show='purchase'>
   <h3>Thanks for shopping with us!</h3>
   <button type='button' ng-click="keepShopping()">Continue shopping</button>
+  <button type='button' ng-click="viewOrders()">View all orders</button>
 </div>

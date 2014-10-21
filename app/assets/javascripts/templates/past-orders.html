@@ -1,0 +1,13 @@
+<h2>List of all the past orders</h2>
+<table>
+  <tr>
+    <th>Customer Name</th>
+    <th>Cost</th>
+  </tr>
+  <tr ng-repeat='order in orders'>
+    <td>{{order.person}}</td>
+    <td>${{order.cost}}</td>
+  </tr>
+</table>
+
+<button tyep='button' ng-click='keepShopping()'>Continue shopping</button>

@@ -9,5 +9,9 @@ app.config(function($routeProvider) {
     .when("/checkout", {
       templateUrl: "<%= asset_path('assets/templates/checkout.html') %>",
       controller: "OrderController"
-    });
+    })
+    .when("/orderlist", {
+      templateUrl: "<%= asset_path('assets/templates/past-orders.html') %>",
+      controller: "ViewOrderController"
+    })
 });

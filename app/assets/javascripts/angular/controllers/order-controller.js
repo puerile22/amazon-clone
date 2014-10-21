@@ -29,5 +29,8 @@ app.controller('OrderController', ['$scope','Item','$timeout','Order','$location
     $scope.cart = false;
     $scope.purchase = false;
     $location.path('/');
-  }
+  };
+  $scope.viewOrders = function() {
+    $location.path('/orderlist');
+  };
 }]);

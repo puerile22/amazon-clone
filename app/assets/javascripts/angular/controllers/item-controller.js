@@ -28,11 +28,5 @@ app.controller('ItemController', ['$scope','Item','$timeout','Order','$location'
     OrderService.order = '';
     OrderService.order = $scope.order;
     $location.path('/checkout');
-    // $scope.allItem = false;
-    // if ($scope.cartItems.length === 0) {
-    //   $scope.empty = true;
-    // } else {
-    //   $scope.cart = true;
-    // }
   };
 }]);
