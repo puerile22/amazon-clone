@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141020073312) do
+ActiveRecord::Schema.define(version: 20141021224832) do
+
+  create_table "histories", force: true do |t|
+    t.integer  "quantity"
+    t.integer  "item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "user"
+  end
 
   create_table "items", force: true do |t|
     t.string   "name"

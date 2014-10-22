@@ -1,0 +1,8 @@
+<h3>Order history</h3>
+<div ng-repeat='history in histories'>
+  <img ng-src='{{history.item.url}}'>
+  <p>Item: {{history.item.name}}</p>
+  <p>Quantity: {{history.quantity}}</p>
+</div>
+<button type='button' ng-click="keepShopping()">Continue shopping</button>
+<button type='button' ng-click="viewOrders()">View all orders</button>

@@ -1,4 +1,4 @@
-app.controller('OrderController', ['$scope','Item','$timeout','Order','$location','OrderService', function($scope, Item,$timeout,Order,$location,OrderService) {
+app.controller('OrderController', ['$scope','Item','$timeout','Order','$location','OrderService','History', function($scope, Item,$timeout,Order,$location,OrderService,History) {
   if (OrderService.cart.length === 0) {
     $scope.cart = false;
     $scope.empty = true;
@@ -18,11 +18,18 @@ app.controller('OrderController', ['$scope','Item','$timeout','Order','$location
     } else {
       for (var i = 0;i < $scope.cartItems.length;i++) {
         $scope.cartItems[i].$update();
+        $scope.history = new History();
+        $scope.history.quantity = $scope.cartItems[i].add;
+        $scope.history.user = $scope.order.person;
+        $scope.history.item_id = $scope.cartItems[i].id;
+        $scope.history.$save();
       }
       $scope.order.$save();
       $scope.cart = false;
-      $scope.purchase = true;
+      // $scope.purchase = true;
+      OrderService.person = $scope.order.person;
     }
+    $location.path('/history');
   };
   $scope.keepShopping = function() {
     $scope.empty = false;

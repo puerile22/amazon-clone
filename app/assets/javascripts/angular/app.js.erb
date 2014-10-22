@@ -14,4 +14,8 @@ app.config(function($routeProvider) {
       templateUrl: "<%= asset_path('assets/templates/past-orders.html') %>",
       controller: "ViewOrderController"
     })
+    .when("/history", {
+      templateUrl: "<%= asset_path('assets/templates/history.html') %>",
+      controller: "HistoryController"
+    })
 });

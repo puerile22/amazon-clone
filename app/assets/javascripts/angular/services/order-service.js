@@ -1,6 +1,7 @@
 app.factory('OrderService', [function() {
   return {
     order: '',
-    cart:[]
+    cart:[],
+    person: ''
   }
 }]);

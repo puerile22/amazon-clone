@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   resources :orders
-
   root 'items#home'
   resources :items, defaults: {format: :json}
-
+  get '/histories' => 'histories#index'
+  post '/histories' => 'histories#create'
+  get '/histories/:id' => 'histories#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
